@@ -3,12 +3,26 @@
 	&__header {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 10px;
+		align-items: center;
+		font-weight: bold;
+		padding: 10px;
+		box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 	}
 
-	&__swatch-tool {
+	&__tools {
+		display: flex;
+	}
+
+	&__tool {
+		width: 20px;
+		height: 20px;
+		display: inline-flex;
+		border-radius: 3px;
+		cursor: pointer;
+		margin: 0 3.1px 0;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+		border: 0;
 		position: relative;
-		box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.15);
 		background-color: #fff;
 
 		i {
@@ -55,18 +69,56 @@
 	}
 }
 
-.pcr-swatch {
+.e-no-value-color {
 
-	&.pcr-active {
+	.pickr {
+		background: linear-gradient(135deg, #ffffff 46%,#ff3030 50%,#ffffff 54%);
+	}
 
-		~ .elementor-color-picker__add-swatch {
-			background-color: $editor-lightest;
-			pointer-events: none;
-			box-shadow: none;
+	.pcr-button {
+		color: transparent;
+		background-image: none;
+		background-color: transparent;
+	}
+}
 
-			i {
-				color: #fff;
+.pcr {
+
+	&-app[data-theme=monolith] {
+		padding: 0;
+	}
+
+	&-result {
+		border-right-width: 1px;
+		border-radius: 3px;
+	}
+
+	&-selection, &-interaction {
+		padding: 0 10px;
+	}
+
+	&-interaction {
+		padding-bottom: 10px;
+	}
+
+	&-swatch {
+
+		&.pcr-active {
+
+			~ .elementor-color-picker__add-swatch {
+				background-color: $editor-lightest;
+				pointer-events: none;
+				box-shadow: none;
+
+				i {
+					color: #fff;
+				}
 			}
 		}
+	}
+
+	.elementor-control-dynamic-switcher {
+		height: 20px;
+		border: 0;
 	}
 }

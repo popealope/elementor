@@ -1,0 +1,138 @@
+// Elementor Global Controls
+.e-global {
+
+	&-select {
+		border: 1px solid $editor-lightest;
+		@include border-end(0);
+		border-radius: 3px 0 0 3px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 4px;
+		width: $control-unit * 3.6;
+		cursor: pointer;
+
+		i {
+			@include padding-start(5px);
+			@include padding-end(2px);
+		}
+	}
+
+	&-selected {
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&-control-popover {
+		width: 270px;
+		z-index: 1;
+		font-size: 12px;
+	}
+
+	&-popover {
+
+		&-container {
+			box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+			border-radius: 3px;
+			background-color: #fff;
+		}
+
+		&-title {
+			padding: 15px 20px;
+			font-weight: bold;
+			color: $editor-dark;
+			border-bottom: 1px solid $gray-bg;
+
+			i {
+				@include margin-end(5px);
+				color: $editor-lightest;
+			}
+		}
+	}
+
+	&-previews-container {
+		max-height: 260px;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: darkgrey;
+			outline: 1px solid slategrey;
+			border-radius: 10px;
+		}
+	}
+
+	&-manage-button {
+		color: $editor-dark;
+		font-weight: 500;
+		padding: 15px 20px;
+		border-top: 1px solid $gray-bg;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		i {
+			@include margin-start(auto);
+		}
+	}
+
+	// Typography Control
+	&-text-style {
+		padding: 5px 35px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $editor-background-light;
+		}
+	}
+
+	&-info-tooltip {
+		width: 270px;
+		z-index: 1;
+		background-color: rgba(30,30,30,0.9);
+		color: #fff;
+		padding: 20px;
+		border-radius: 3px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: -17px;
+			@include start(16px);
+			transform: scaleY(0.9) rotate(180deg);
+			border: 10px solid transparent;
+			border-bottom-color: rgba(30,30,30,0.9);
+		}
+	}
+
+	&-confirm {
+
+		&-add {
+
+			// Multiple selectors because a CSS specificity override was necessary
+			.dialog-buttons-wrapper > .dialog-button.dialog-confirm-ok {
+				color: $editor-success;
+			}
+		}
+
+		&-input-wrapper {
+			display: flex;
+			align-items: center;
+			border: 1px solid $editor-light;
+			border-radius: 3px;
+			margin-top: 10px;
+			padding: 2px;
+
+			input {
+				font-family: Roboto, Arial, sans-serif;
+				font-weight: 500;
+				font-size: 12px;
+				padding: 2px;
+				border: 0;
+			}
+		}
+	}
+}

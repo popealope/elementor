@@ -265,4 +265,16 @@ class Test_Manager extends Elementor_Test_Base {
 
 		$this->assertEquals( $controller->get_name(), $data_controller_name );
 	}
+
+	public function test_commands_formats() {
+		$this->manager->run_server();
+
+		$this->assertEquals( [
+			'editor/documents/elements' => 'editor/documents/{document_id}/elements/{element_id}',
+			'editor/documents/index' => 'editor/documents/index/{document_id}',
+			'globals/index' => 'globals/index',
+			'globals/colors' => 'globals/colors/{id}',
+			'globals/typography' => 'globals/typography/{id}',
+		], $this->manager->command_formats );
+	}
 }

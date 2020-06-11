@@ -41,7 +41,7 @@ ControlBaseDataView = ControlBaseView.extend( {
 	},
 
 	behaviors: function() {
-		const behaviors = {},
+		const behaviors = ControlBaseView.prototype.behaviors.apply( this, arguments ),
 			dynamicSettings = this.options.model.get( 'dynamic' );
 
 		if ( dynamicSettings && dynamicSettings.active ) {
@@ -74,6 +74,10 @@ ControlBaseDataView = ControlBaseView.extend( {
 
 	getControlValue: function() {
 		return this.container.settings.get( this.model.get( 'name' ) );
+	},
+
+	getGlobalValue: function() {
+		return this.container.globals.get( this.model.get( 'name' ) );
 	},
 
 	setValue: function( value ) {
@@ -248,6 +252,24 @@ ControlBaseDataView = ControlBaseView.extend( {
 		this.hideTooltip();
 
 		this.applySavedValue();
+	},
+
+	setOptions: function( key, value ) {
+		// If the state has not been initially set before, set it here
+		if ( 'undefined' === typeof this.options[ key ] ) {
+			this.options[ key ] = value;
+
+			return this.options;
+		}
+
+		// If the new state is the same as the one saved, do nothing
+		if ( this.options[ key ] === value ) {
+			return;
+		}
+
+		this.options[ key ] = value;
+
+		return this.options;
 	},
 
 	addTooltip: function() {
